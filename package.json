@@ -1,0 +1,22 @@
+{
+  "name": "qlick",
+  "private": true,
+  "version": "0.1.0",
+  "license": "MIT",
+  "packageManager": "pnpm@9.0.0",
+  "workspaces": [
+    "apps/*",
+    "services/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "pnpm -r --parallel --filter @qlick/web dev",
+    "dev:web": "pnpm -C apps/web dev",
+    "dev:admin": "pnpm -C apps/admin dev",
+    "dev:kitchen": "pnpm -C apps/kitchen dev",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test"
+  }
+}
+
+
