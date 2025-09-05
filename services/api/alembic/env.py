@@ -8,7 +8,7 @@ from alembic import context
 import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from app.db.base import Base  # noqa: E402
+from app.db.base import Base, import_models  # noqa: E402
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -19,6 +19,7 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
+import_models()
 target_metadata = Base.metadata
 
 
