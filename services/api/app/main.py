@@ -3,9 +3,16 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.utils.rate_limit import RateLimitMiddleware
 from app.api.routers import auth, menu, items, cart, orders, ai, analytics, search
+from app.db.base import import_models
 
 
 app = FastAPI(title="Qlick API")
+
+
+@app.on_event("startup")
+def on_startup() -> None:
+    import_models()
+
 
 app.add_middleware(RateLimitMiddleware, limit=60, window_seconds=60)
 
